@@ -21,21 +21,6 @@ PASSWORD_HASH = os.getenv("PASSWORD_HASH")
 with open('login.html', 'r') as file:
     login_page = file.read()
 
-# Page personnelle (ton espace)
-dashboard_page = '''
-<!DOCTYPE html>
-<html>
-<head><title>Espace Personnel</title></head>
-<body>
-    <h2>Bienvenue dans ton espace personnel !</h2>
-    <ul>
-        <li><a href="/app1">Application 1</a></li>
-        <li><a href="/app2">Application 2</a></li>
-    </ul>
-</body>
-</html>
-'''
-
 @app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
@@ -50,6 +35,8 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
+    with open('dashboard.html', 'r') as file:
+        dashboard_page = file.read()
     return render_template_string(dashboard_page)
 
 @app.route('/app1')

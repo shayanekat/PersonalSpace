@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.apps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.app {
+    text-decoration: none;
+    color: white;
+    background-color: #1e1e1e;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 200px;
+    text-align: center;
+}
+
+.app:hover {
+    background-color: #2a2a2a;
+    transform: scale(1.05);
+}
+
+/* Responsive pour téléphone */
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    input {
+        font-size: 1em;
+    }
+}
