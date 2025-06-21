@@ -1,0 +1,67 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Fira Code', Consolas, 'Courier New', monospace;
+    font-size: 1em;
+    resize: vertical;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.message {
+    margin-top: 10px;
+    color: #0f0;
+}
+
+/* Responsive pour téléphone */
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    input {
+        font-size: 1em;
+    }
+}
