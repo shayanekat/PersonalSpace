@@ -11,13 +11,15 @@
     <div class="container">
         <h1>Éditeur de Texte</h1>
         <form method="POST">
-            <textarea name="content" rows="20">{{ content }}</textarea>
-            <br>
-            <button type="submit">💾 Sauvegarder</button>
+            <textarea name="content">{{ content }}</textarea><br>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button type="submit">Sauvegarder</button>
+                {% if message %}
+                    <span class="confirmation">{{ message }}</span>
+                {% endif %}
+            </div>
         </form>
-        {% if message %}
-            <p class="message" id="save-message">{{ message }}</p>
-        {% endif %}
+
 
     </div>
     <script>
