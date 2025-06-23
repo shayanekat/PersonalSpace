@@ -9,7 +9,7 @@ import os
 import werkzeug.security
 from dotenv import load_dotenv
 from flask import (Flask, redirect, render_template, render_template_string,
-                   request, url_for)
+                   request, session, url_for)
 
 load_dotenv()  # Charge les variables du fichier .env
 
@@ -40,7 +40,7 @@ def dashboard():
         dashboard_page = file.read()
     return render_template_string(dashboard_page)
 
-@app.route('/app1', methods=['GET', 'POST'])
+@app.route('/texteditor', methods=['GET', 'POST'])
 def app1():
     file_path = 'apps/editor/note.txt'
     message = None
