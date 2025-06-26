@@ -20,15 +20,17 @@ h1 {
 
 textarea {
     width: 100%;
+    min-height: 400px; /* Tu peux ajuster selon ce que tu trouves confortable */
+    padding: 10px;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
     background-color: #1e1e1e;
-    color: white;
+    color: #ffffff;
     border: 1px solid #444;
     border-radius: 5px;
-    padding: 10px;
-    font-family: 'Fira Code', Consolas, 'Courier New', monospace;
-    font-size: 1em;
-    resize: vertical;
+    resize: vertical; /* Permet à l'utilisateur d'agrandir si besoin */
 }
+
 
 button {
     margin-top: 10px;
