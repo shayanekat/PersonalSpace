@@ -1,37 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Éditeur de Texte</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div class="container">
-        <h1>Éditeur de Texte</h1>
-        <form method="POST">
-            <textarea name="content">{{ content }}</textarea><br>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <button type="submit">Sauvegarder</button>
-                {% if message %}
-                    <span class="confirmation">{{ message }}</span>
-                {% endif %}
-            </div>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/editor.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <main class="editor-shell">
+      <header class="editor-header">
+        <h1>Editeur de texte</h1>
+        <div class="tabs" aria-label="Onglets de fichiers">
+          {% for file in files %}
+          <a
+            href="{{ url_for('texteditor', file=file) }}"
+            class="tab {% if file == selected %}active{% endif %}"
+          >
+            {{ file[:-4] }}
+          </a>
+          {% endfor %} {% if not files %}
+          <span class="tab-placeholder">Aucun onglet</span>
+          {% endif %}
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Gestion des onglets">
+        <form
+          action="{{ url_for('create_file') }}"
+          method="POST"
+          class="create-form"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Nouvel onglet"
+            autocomplete="off"
+            aria-label="Nom du nouvel onglet"
+          />
+          <button type="submit">Ajouter</button>
         </form>
 
+        <form action="{{ url_for('delete_file') }}" method="POST">
+          <input type="hidden" name="file" value="{{ selected or '' }}" />
+          <button type="submit" {% if not selected %}disabled{% endif %}>
+            Supprimer
+          </button>
+        </form>
+      </section>
 
-    </div>
+      <form method="POST" class="editor-form">
+        <input type="hidden" name="file" value="{{ selected or '' }}" />
+        <textarea
+          name="content"
+          placeholder="Crée un onglet pour commencer à écrire."
+          {%
+          if
+          not
+          selected
+          %}disabled{%
+          endif
+          %}
+        >
+{{ content }}</textarea
+        >
+
+        <div class="actions">
+          <button type="submit" {% if not selected %}disabled{% endif %}>
+            Sauvegarder
+          </button>
+
+          {% if message %}
+          <span id="save-message" class="message">{{ message }}</span>
+          {% endif %}
+        </div>
+      </form>
+    </main>
+
     <script>
-        const textarea = document.querySelector('textarea');
-        const message = document.getElementById('save-message');
+      const textarea = document.querySelector("textarea");
+      const message = document.getElementById("save-message");
 
-        if (textarea && message) {
-            textarea.addEventListener('input', () => {
-                message.style.display = 'none';
-            });
-        }
+      if (textarea && message) {
+        textarea.addEventListener("input", () => {
+          message.style.display = "none";
+        });
+      }
     </script>
-
-</body>
+  </body>
 </html>
