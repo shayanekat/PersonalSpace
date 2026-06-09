@@ -14,3 +14,32 @@ body {
     width: 100%;
     overflow-x: auto;
 }
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.footer a:hover {
+    background-color: #3d3d3d;
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+.footer a:active {
+    transform: translateY(0);
+}

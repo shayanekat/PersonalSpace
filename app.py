@@ -4,8 +4,8 @@
 """
 
 import datetime
-import os
 from functools import wraps
+import os
 
 import werkzeug.security
 from werkzeug.utils import secure_filename

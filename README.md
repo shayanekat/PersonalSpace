@@ -24,3 +24,4 @@ ceci est un espace personnel pour y ranger des applications développées par mo
 3. relancer le site web avec `sudo systemctl restart shaykat`
 4. verifier le statut du site avec `sudo systemctl status shaykat`
 5. verifier que cela à bien fonctionner, et corriger les erreurs eventuelles
+6. en cas d'erreur, consulter les logs avec `sudo journalctl -u shaykat -f`
